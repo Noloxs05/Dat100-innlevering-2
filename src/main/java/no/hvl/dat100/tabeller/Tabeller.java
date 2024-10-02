@@ -1,63 +1,102 @@
 package no.hvl.dat100.tabeller;
 
+import java.util.Arrays;
+
 public class Tabeller {
+	//test
+    public static void main(String[] args) {
+        int[] tabell1 = {1, 3, 5, 7, 8, 10};
+        int[] tabell2 = {47, 67, 89};
 
-	// a)
-	public static void skrivUt(int[] tabell) {
+        // a) 
+        System.out.println("Tabell 1: " + tilStreng(tabell1));
 
-		// TODO
-		throw new UnsupportedOperationException("Metoden skrivUt ikke implementert");
+        // b) 
+        System.out.println("Tabell 2: " + tilStreng(tabell2));
 
-	}
+        // c) 
+        System.out.println("Summen av tabell 1 er: " + summer(tabell1));
 
-	// b)
-	public static String tilStreng(int[] tabell) {
+        // d) 
+        System.out.println("Finnes tallet 5 i tabell 1? " + finnesTall(tabell1, 5));
 
-		// TODO
-		throw new UnsupportedOperationException("Metoden tilStreng ikke implementert");
-	}
+        // e) 
+        System.out.println("Posisjonen til tallet 7 i tabell 1 er: " + posisjonTall(tabell1, 7));
 
-	// c)
-	public static int summer(int[] tabell) {
+        // f) 
+        int[] reversertTabell1 = reverser(tabell1);
+        System.out.println("Reversert tabell 1: " + Arrays.toString(reversertTabell1));
 
-		// TODO
-		throw new UnsupportedOperationException("Metoden summer ikke implementert");
-	}
+        // g) 
+        System.out.println("Er tabell 1 sortert? " + erSortert(tabell1));
 
-	// d)
-	public static boolean finnesTall(int[] tabell, int tall) {
+        // h) 
+        int[] sammensattTabell = settSammen(tabell1, tabell2);
+        System.out.println("Sammensatt tabell: " + Arrays.toString(sammensattTabell));
+    }
 
-		// TODO
-		throw new UnsupportedOperationException("Metoden finnesTall ikke implementert");
+    // a) 
+    public static String tilStreng(int[] tabell) {
+        return Arrays.toString(tabell);
+    }
 
-	}
+    // c) 
+    public static int summer(int[] tabell) {
+        int sum = 0;
+        for (int tall : tabell) {
+            sum += tall;
+        }
+        return sum;
+    }
 
-	// e)
-	public static int posisjonTall(int[] tabell, int tall) {
+    // d) 
+    public static boolean finnesTall(int[] tabell, int tall) {
+        for (int element : tabell) {
+            if (element == tall) {
+                return true;
+            }
+        }
+        return false;
+    }
 
-		// TODO
-		throw new UnsupportedOperationException("Metoden posisjonTall ikke implementert");
-	}
+    // e) 
+    public static int posisjonTall(int[] tabell, int tall) {
+        for (int i = 0; i < tabell.length; i++) {
+            if (tabell[i] == tall) {
+                return i;
+            }
+        }
+        return -1; 
+    }
 
-	// f)
-	public static int[] reverser(int[] tabell) {
+    // f) 
+    public static int[] reverser(int[] tabell) {
+        int[] reversert = new int[tabell.length];
+        for (int i = 0; i < tabell.length; i++) {
+            reversert[i] = tabell[tabell.length - 1 - i];
+        }
+        return reversert;
+    }
 
-		// TODO
-		throw new UnsupportedOperationException("Metoden reverser ikke implementert");
-	}
+    // g) 
+    public static boolean erSortert(int[] tabell) {
+        for (int i = 1; i < tabell.length; i++) {
+            if (tabell[i] < tabell[i - 1]) {
+                return false; 
+            }
+        }
+        return true; 
+    }
 
-	// g)
-	public static boolean erSortert(int[] tabell) {
-
-		// TODO
-		throw new UnsupportedOperationException("Metoden erSortert ikke implementert");
-	}
-
-	// h)
-	public static int[] settSammen(int[] tabell1, int[] tabell2) {
-
-		// TODO
-		throw new UnsupportedOperationException("Metoden settSammen ikke implementert");
-
-	}
+    // h)
+    public static int[] settSammen(int[] tabell1, int[] tabell2) {
+        int[] sammensatt = new int[tabell1.length + tabell2.length];
+        for (int i = 0; i < tabell1.length; i++) {
+            sammensatt[i] = tabell1[i];
+        }
+        for (int i = 0; i < tabell2.length; i++) {
+            sammensatt[tabell1.length + i] = tabell2[i];
+        }
+        return sammensatt;
+    }
 }
